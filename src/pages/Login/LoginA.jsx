@@ -93,7 +93,7 @@ const LoginA = ({ setShowLoginA }) => {
         <div className="container-login">
           <form className="form-app" autoComplete="off" onSubmit={handleLogin}>
             <div className="form-title">
-              <h2>Login</h2>
+              <h2>Doctor</h2>
 
               <p>Por favor ingrese sus credenciales.</p>
             </div>
@@ -130,7 +130,7 @@ const LoginA = ({ setShowLoginA }) => {
                   checked={rememberMe}
                   onChange={handleRememberMeChange}
                 />
-                <label>Recordarme</label>
+                <label>Recordar mi usuario</label>
               </div>
               <div className="">
                 <a href="/loginB">Ingresar como paciente</a>
@@ -143,14 +143,14 @@ const LoginA = ({ setShowLoginA }) => {
                 type="submit"
                 disabled={isSubmitting || !username || !password}
               >
-                Login
+                Ingresar
               </button>
               <button
                 className="form-button register"
                 onClick={handleRegister}
                 disabled={isSubmitting}
               >
-                Register
+                Registrar nuevo doctor
               </button>
             </div>
           </form>

@@ -1,9 +1,10 @@
-/* Agrega esto al principio de tu archivo CSS */
+/* Importa la fuente con font-display: swap */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
   margin: 0;
-  font-family: Poppins, Helvetica, sans-serif;
+  
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
@@ -21,7 +22,6 @@ body {
 }
 
 .App {
-  font-family: 'Poppins', Helvetica, sans-serif;
   background-color: #ffffff;
   width: 500px;
   padding: 2rem;
