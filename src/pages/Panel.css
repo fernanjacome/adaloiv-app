@@ -1,0 +1,51 @@
+
+
+.panel-container {
+  display: flex;
+  height: 100vh;
+}
+
+.content-container {
+  flex: 1;
+}
+
+
+
+.main-content {
+  margin: 15px 10px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content h2 {
+  margin-top: 0;
+}
+
+.confirm-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-button:hover {
+  background-color: #c82333;
+}
+
+.login-title {
+display: flex;
+justify-content: space-between;
+}
+
+.login-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+}

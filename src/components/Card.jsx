@@ -3,9 +3,14 @@ import { MdCancel } from "react-icons/md";
 
 export const Card = ({ message, closeModal }) => {
   const [currentDate, setCurrentDate] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // Función para formatear la fecha una sola vez
+    const capitalizeWords = (str) => {
+      return str.replace(/\b\w/g, (char) => char.toUpperCase());
+    };
+
     const formatDate = () => {
       const options = {
         weekday: "long",
@@ -19,18 +24,31 @@ export const Card = ({ message, closeModal }) => {
       };
       const date = new Date();
       const formattedDate = date.toLocaleDateString("es-ES", options);
-      setCurrentDate(formattedDate); // Guardamos la fecha formateada en el estado
+      const capitalizedDate = capitalizeWords(formattedDate);
+      setCurrentDate(capitalizedDate);
     };
 
-    formatDate(); // Llamamos la función cuando el componente se monta
-  }, []); // Se ejecuta solo una vez al montar el componente
+    formatDate();
+    // Retrasar ligeramente la visibilidad para que la animación funcione
+    setTimeout(() => setIsVisible(true), 50);
+  }, []);
+
+  const handleClose = () => {
+    setIsExiting(true); // Activar animación de cierre
+    setTimeout(() => {
+      setIsVisible(false); // Retirar del DOM después de la animación
+      closeModal(); // Llamar a la función de cierre
+    }, 200); // Tiempo igual a la duración de la animación (0.5s)
+  };
 
   return (
     <div className="modal-overlay">
-      <div className="modal-card">
+      <div
+        className={`modal-card ${isVisible && !isExiting ? "show" : "close"}`}
+      >
         <MdCancel style={{ fontSize: "5rem", color: "#F1416C" }} />
         <p>{message}</p>
-        <button onClick={closeModal} className="close-btn">
+        <button onClick={handleClose} className="close-btn">
           Ok, entendido!
         </button>
         <div className="modal-footer">

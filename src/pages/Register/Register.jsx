@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Card } from "@Components/Card";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,13 @@ const Register = () => {
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const closeModal = () => {
+    setShowErrorModal(false);
+    setErrorMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -51,9 +59,13 @@ const Register = () => {
       }
     } catch (error) {
       if (error.response && error.response.data) {
-        setMessage("Error: " + Object.values(error.response.data).join(". "));
+        setErrorMessage(
+          "Error: " + Object.values(error.response.data).join(". ")
+        );
+        setShowErrorModal(true);
       } else {
-        setMessage("An unexpected error occurred.");
+        setErrorMessage("An unexpected error occurred.");
+        setShowErrorModal(true);
       }
     }
   };
@@ -134,7 +146,9 @@ const Register = () => {
           </button>
         </div>
       </form>
-      {message && <p>{message}</p>}
+      {showErrorModal && (
+        <Card message={errorMessage} closeModal={closeModal} />
+      )}
     </div>
   );
 };
