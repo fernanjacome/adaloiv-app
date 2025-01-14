@@ -5,6 +5,7 @@ import Register from "./pages/Register/Register";
 import LoginA from "./pages/Login/LoginA";
 import LoginB from "./pages/Login/LoginB";
 import Panel from "./pages/Panel";
+import Prueba from "./pages/Login/Prueba";
 
 const App = () => {
   const [showLoginA, setShowLoginA] = useState(true);
@@ -22,6 +23,7 @@ const App = () => {
             )
           }
         />
+        <Route path="/prueba" element={<Prueba />} />
         <Route
           path="/login"
           element={

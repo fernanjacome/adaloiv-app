@@ -67,7 +67,7 @@ const Register = () => {
       console.log(error);
       if (error.response) {
         setErrorMessage(
-          "Error: " + Object.values(error.response.data).join(". ")
+          "Error: " + error.response.data.detail || error.response.data
         );
         setShowErrorModal(true);
       } else {
@@ -82,7 +82,7 @@ const Register = () => {
     <section className="login">
       {loading && <Spinner />}
       <div className="App">
-        <form className="form-app" autoComplete="off" onSubmit={handleSubmit}>
+        <form className="form-app" autoComplete="off">
           <div className="form-title">
             <h2>Register</h2>
             <p>¡Bienvenido de vuelta! Por favor ingresa tus credenciales.</p>
@@ -146,7 +146,7 @@ const Register = () => {
           </div>
           <button
             className="form-button"
-            type="submit"
+          onClick={handleSubmit}
             disabled={
               isSubmitting ||
               !formData.username ||
