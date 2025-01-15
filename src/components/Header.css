@@ -1,7 +1,7 @@
 .header {
   background-color: #ffffff;
   color: #252525;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +31,7 @@
   padding: 0;
 }
 
-.header-nav ul li button{
+.header-nav ul li button {
   color: #2c3e50;
   background: none;
   border: none;

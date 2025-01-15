@@ -55,7 +55,7 @@ const LoginPro = ({ setShowLoginA }) => {
         }
         setIsSubmitting(false);
         setLoading(false);
-        navigate("/panel");
+        navigate("/panel", { state: { userData: response.data } });
         console.log("Login successful", response.data);
       }
     } catch (error) {

@@ -3,15 +3,17 @@ import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import "./Panel.css"; // Import the CSS file for styling
 import Settings from "./Sections/Settings";
-import Dashboard from "./Sections/Dashboard";
+import ConsultaMedica from "./Sections/ConsultaMedica";
 import Profile from "./Sections/Profile";
 import Logout from "./Sections/Logout";
 import Spinner from "../components/Spinner";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Panel = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const location = useLocation();
+  const { userData } = location.state || {};
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -30,7 +32,7 @@ const Panel = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <Dashboard />;
+        return <ConsultaMedica />;
       case "settings":
         return <Settings />;
       case "profile":
@@ -38,20 +40,21 @@ const Panel = () => {
       case "logout":
         return <Logout onConfirm={handleLogoutConfirm} />;
       default:
-        return <Dashboard />;
+        return <ConsultaMedica />;
     }
   };
 
   return (
     <div className="panel-container">
       {loading && <Spinner />}
+
       <Navbar
         setActiveTab={setActiveTab}
         isCollapsed={isCollapsed}
         toggleCollapse={toggleCollapse}
       />
       <div className="content-container">
-        <Header />
+        <Header userData={userData} />
         <main className="main-content">{renderContent()}</main>
       </div>
     </div>

@@ -1,0 +1,129 @@
+/* Estilos generales */
+.container {
+    display: flex;
+    background-color: #fff;
+}
+
+.form-column {
+    flex: 1;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-column {
+    flex: 3;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007bff;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.atemed-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.atemed-details h3 {
+    font-size: 1.6rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.atemed-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.atemed-section {
+    margin-bottom: 20px;
+}
+
+.atemed-section.diagnosis {
+    width: 80%;
+}
+
+.atemed-section p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.atemed-section strong {
+    color: #555;
+}
+
+/* Estilos para el botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff0000;
+}
