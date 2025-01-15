@@ -1,5 +1,5 @@
 .navbar {
-  width: 150px;
+  width: 200px;
   background-color: white;
   color: #2c3e50;
   padding: 15px;
@@ -12,7 +12,7 @@
 }
 
 .navbar.collapsed {
-  width: 40px;
+  width: 70px;
 }
 
 .navbar-header {
@@ -23,9 +23,11 @@
   padding: 0.2rem;
   border-bottom: 1px solid #bdc3c7;
 }
-.navbar-header svg{
+
+.navbar-header svg {
   padding: 0.2rem;
 }
+
 .navbar-header h2 {
   margin: 0;
   font-size: 24px;
@@ -36,11 +38,11 @@
   width: 100%;
 }
 
-.container-button-collapse{
+.container-button-collapse {
   display: flex;
   justify-content: center;
   width: 100%;
-border-top: 1px solid #bdc3c7;
+  border-top: 1px solid #bdc3c7;
 
 }
 
@@ -82,7 +84,7 @@ border-top: 1px solid #bdc3c7;
   text-align: left;
 }
 
-.navbar ul li button{
+.navbar ul li button {
   color: #2c3e50;
   background: none;
   border: none;
