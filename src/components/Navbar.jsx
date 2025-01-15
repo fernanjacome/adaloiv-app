@@ -26,7 +26,7 @@ const Navbar = ({ setActiveTab, isCollapsed, toggleCollapse }) => {
       <ul>
         <li>
           <button onClick={() => setActiveTab("dashboard")}>
-            <FaTachometerAlt /> <span>{!isCollapsed && "Dashboard"}</span>
+            <FaTachometerAlt /> <span>{!isCollapsed && "Consulta cita"}</span>
           </button>
         </li>
         <li>

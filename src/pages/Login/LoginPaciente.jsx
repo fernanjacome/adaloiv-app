@@ -4,14 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "@Components/Card";
 import Spinner from "../../components/Spinner";
 
-const LoginB = ({ setShowLoginA }) => {
+const LoginPaciente = ({ setShowLoginA }) => {
   const [cedula, setCedula] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
-  const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
@@ -20,10 +18,9 @@ const LoginB = ({ setShowLoginA }) => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/login/identification/",
+        "http://127.0.0.1:8000/api/login-paciente/",
         {
-          identification_number: cedula,
-          password: password,
+          Pcte_id: cedula,
         }
       );
       console.log(response);
@@ -73,16 +70,7 @@ const LoginB = ({ setShowLoginA }) => {
                 autoComplete="new-cedula"
                 maxLength={10}
               />
-            </div>
-            <div className="form-user">
-              <label>Contraseña</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="new-password"
-              />
-            </div>
+            </div>            
             <div className="form-options">
               <div className="">
                 <a href="/login">Ingresar como doctor</a>
@@ -92,12 +80,7 @@ const LoginB = ({ setShowLoginA }) => {
               <button className="form-button" type="submit">
                 Ingresar
               </button>
-              <button
-                className="form-button register"
-                onClick={() => navigate("/register")}
-              >
-                Registrar nuevo paciente
-              </button>
+            
             </div>
           </form>
           <div></div>
@@ -110,4 +93,4 @@ const LoginB = ({ setShowLoginA }) => {
   );
 };
 
-export default LoginB;
+export default LoginPaciente;

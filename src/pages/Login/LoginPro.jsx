@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "@Components/Card";
 import Spinner from "../../components/Spinner";
 
-const LoginA = ({ setShowLoginA }) => {
-  const [username, setUsername] = useState("");
+const LoginPro = ({ setShowLoginA }) => {
+  const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -26,7 +26,7 @@ const LoginA = ({ setShowLoginA }) => {
   const handleRememberMeChange = (e) => {
     setRememberMe(e.target.checked);
     if (e.target.checked) {
-      localStorage.setItem("rememberedUsername", username);
+      localStorage.setItem("rememberedUsername", email);
     } else {
       localStorage.removeItem("rememberedUsername");
     }
@@ -40,16 +40,16 @@ const LoginA = ({ setShowLoginA }) => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login/", {
-        username: username,
-        password: password,
+      const response = await axios.post("http://127.0.0.1:8000/api/login-profesional/", {
+        email: email,
+        id: password,
       });
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("AccessToken", response.data.access_token);
         localStorage.setItem("RefreshToken", response.data.refresh_token);
         if (rememberMe) {
-          localStorage.setItem("rememberedUsername", username);
+          localStorage.setItem("rememberedUsername", email);
         } else {
           localStorage.removeItem("rememberedUsername");
         }
@@ -77,9 +77,6 @@ const LoginA = ({ setShowLoginA }) => {
     }
   };
 
-  const handleRegister = () => {
-    navigate("/register");
-  };
 
   const closeModal = () => {
     setShowErrorModal(false);
@@ -106,16 +103,16 @@ const LoginA = ({ setShowLoginA }) => {
               }}
             ></hr>
             <div className="form-user">
-              <label>Username</label>
+              <label>Correo electronico</label>
               <input
                 type="text"
-                value={username}
+                value={email}
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="new-user"
               />
             </div>
             <div className="form-user">
-              <label>Password</label>
+              <label>Contraseña</label>
               <input
                 type="password"
                 value={password}
@@ -123,15 +120,7 @@ const LoginA = ({ setShowLoginA }) => {
                 autoComplete="new-password"
               />
             </div>
-            <div className="form-options">
-              <div className="remember">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={handleRememberMeChange}
-                />
-                <label>Recordar mi usuario</label>
-              </div>
+            <div className="form-options">              
               <div className="">
                 <a href="/loginB">Ingresar como paciente</a>
               </div>
@@ -141,17 +130,11 @@ const LoginA = ({ setShowLoginA }) => {
               <button
                 className="form-button"
                 type="submit"
-                disabled={isSubmitting || !username || !password}
+                disabled={isSubmitting || !email || !password}
               >
                 Ingresar
               </button>
-              <button
-                className="form-button register"
-                onClick={handleRegister}
-                disabled={isSubmitting}
-              >
-                Registrar nuevo doctor
-              </button>
+             
             </div>
           </form>
           <div></div>
@@ -165,4 +148,4 @@ const LoginA = ({ setShowLoginA }) => {
   );
 };
 
-export default LoginA;
+export default LoginPro;
