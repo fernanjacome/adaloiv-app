@@ -10,10 +10,13 @@ const Header = ({ userData }) => {
           <li>
             <li>
               {userData && (
-                <div>
+                <div className="info-profesional">
                   <p>
                     <strong>Profesional: </strong>
                     {userData.Prof_FullNombre}{" "}
+                  </p>
+                  <p>
+                    <strong>Cedula:</strong> {userData.Prof_Id}
                   </p>
                   <p>
                     <strong>Especialidad:</strong> {userData.Especialización}
@@ -25,7 +28,7 @@ const Header = ({ userData }) => {
         </ul>
       </nav>
       <div className="header-left">
-        <h1>Sistema MSP Distrito 12D0</h1>
+        <h1>Sistema MSP Distrito 12D01</h1>
       </div>
     </header>
   );

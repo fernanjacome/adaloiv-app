@@ -23,15 +23,6 @@ const LoginPro = ({ setShowLoginA }) => {
     }
   }, []);
 
-  const handleRememberMeChange = (e) => {
-    setRememberMe(e.target.checked);
-    if (e.target.checked) {
-      localStorage.setItem("rememberedUsername", email);
-    } else {
-      localStorage.removeItem("rememberedUsername");
-    }
-  };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -40,10 +31,13 @@ const LoginPro = ({ setShowLoginA }) => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login-profesional/", {
-        email: email,
-        id: password,
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/login-profesional/",
+        {
+          email: email,
+          id: password,
+        }
+      );
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("AccessToken", response.data.access_token);
@@ -59,16 +53,14 @@ const LoginPro = ({ setShowLoginA }) => {
         console.log("Login successful", response.data);
       }
     } catch (error) {
+      console.log(error.response);
       if (error.response) {
-        // Errores específicos del servidor
-        setErrorMessage(error.response.data.error || "Error en el servidor.");
+        setErrorMessage(error.response.data.message || "Error en el servidor.");
       } else if (error.request) {
-        // Errores de red
         setErrorMessage(
           "No se pudo conectar con el servidor. Intente de nuevo."
         );
       } else {
-        // Otros errores
         setErrorMessage("Ocurrió un error inesperado. Intente más tarde.");
       }
       setIsSubmitting(false);
@@ -76,7 +68,6 @@ const LoginPro = ({ setShowLoginA }) => {
       setLoading(false);
     }
   };
-
 
   const closeModal = () => {
     setShowErrorModal(false);
@@ -120,7 +111,7 @@ const LoginPro = ({ setShowLoginA }) => {
                 autoComplete="new-password"
               />
             </div>
-            <div className="form-options">              
+            <div className="form-options">
               <div className="">
                 <a href="/loginB">Ingresar como paciente</a>
               </div>
@@ -134,7 +125,6 @@ const LoginPro = ({ setShowLoginA }) => {
               >
                 Ingresar
               </button>
-             
             </div>
           </form>
           <div></div>

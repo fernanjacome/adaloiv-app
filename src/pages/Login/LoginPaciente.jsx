@@ -32,7 +32,7 @@ const LoginPaciente = ({ setShowLoginA }) => {
         navigate("/panel");
       }
     } catch (error) {
-      setErrorMessage("Invalid credentials, please try again.");
+      setErrorMessage("No se encuentra registrado en el sistema MSP");
       setShowErrorModal(true);
       setLoading(false);
     }
@@ -70,7 +70,7 @@ const LoginPaciente = ({ setShowLoginA }) => {
                 autoComplete="new-cedula"
                 maxLength={10}
               />
-            </div>            
+            </div>
             <div className="form-options">
               <div className="">
                 <a href="/login">Ingresar como doctor</a>
@@ -80,7 +80,6 @@ const LoginPaciente = ({ setShowLoginA }) => {
               <button className="form-button" type="submit">
                 Ingresar
               </button>
-            
             </div>
           </form>
           <div></div>

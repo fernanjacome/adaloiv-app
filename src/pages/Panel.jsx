@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
-import "./Panel.css"; // Import the CSS file for styling
-import Settings from "./Sections/Settings";
+import "./Panel.css";
 import ConsultaMedica from "./Sections/ConsultaMedica";
-import Profile from "./Sections/Profile";
+import Profile from "./Sections/ConsultaPaciente";
 import Logout from "./Sections/Logout";
 import Spinner from "../components/Spinner";
 import { useLocation, useNavigate } from "react-router-dom";
+import RegistroAtencionMedica from "./Sections/RegistroAtencionMedica";
 
 const Panel = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -31,11 +31,11 @@ const Panel = () => {
 
   const renderContent = () => {
     switch (activeTab) {
-      case "dashboard":
+      case "consultaMedica":
         return <ConsultaMedica />;
-      case "settings":
-        return <Settings />;
-      case "profile":
+      case "registroAtencionMedica":
+        return <RegistroAtencionMedica />;
+      case "consultaPaciente":
         return <Profile />;
       case "logout":
         return <Logout onConfirm={handleLogoutConfirm} />;

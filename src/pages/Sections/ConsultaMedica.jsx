@@ -39,9 +39,9 @@ const ConsultaMedica = () => {
   };
 
   return (
-    <div className="container">
+    <div className=" consulta-medica container">
       <div className="form-column">
-        <h2>Buscar Atencion Medica</h2>
+        <h2>Buscar Atención Medica</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="AtemedId">Ingrese el ID:</label>
           <input
@@ -51,7 +51,9 @@ const ConsultaMedica = () => {
             onChange={(e) => setAtemedId(e.target.value)}
             placeholder="Ingresa el ID del Atemed"
           />
-          <button type="submit">Buscar</button>
+          <button className="buscar" type="submit">
+            Buscar
+          </button>
         </form>
 
         {error && <p className="error">{error}</p>}

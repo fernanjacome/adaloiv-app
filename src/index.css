@@ -3,11 +3,11 @@
 
 body {
   margin: 0;
-  
+
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 
 
   min-height: 100vh;
@@ -19,6 +19,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url("./assets/images/bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  text-align: center;
+  padding: 20px;
 }
 
 .App {
@@ -26,7 +34,8 @@ body {
   width: 500px;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Para un efecto de sombra */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  /* Para un efecto de sombra */
 
   display: flex;
   flex-direction: column;
@@ -35,48 +44,49 @@ body {
   gap: 1rem;
 }
 
-.App .title{
- text-align: center;
+.App .title {
+  text-align: center;
   font-size: 1rem;
 }
 
-.container-login{
+.container-login {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.form-app{
+.form-app {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-content: center;
-  
+
   text-align: start;
 }
 
-.form-app h2{
+.form-app h2 {
   margin: 0;
 }
-.form-app p{
+
+.form-app p {
   font-weight: 500;
   font-size: 0.9rem;
   color: #4b4b4b;
 }
 
-.form-title{
+.form-title {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.form-user{
+.form-user {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.form-user input{
+.form-user input {
   padding: 0.7rem;
   border-radius: 5px;
   width: 100%;
@@ -85,83 +95,74 @@ body {
   border: 1px solid #a0a0a0;
 }
 
-.form-user input:focus{
+.form-user input:focus {
   outline: none;
-  border: 1px solid #7F55DB;
+  border: 1px solid #5783da;
 }
 
-.form-user label{
+.form-user label {
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.form-button{
+.form-button {
   width: 100%;
   padding: 0.7rem;
   border-radius: 5px;
   border: none;
-  background-color: #7F55DB;
+  background-color: #5783da;
   color: white;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.1s ease-in;
 }
-.form-button:hover{
-  background-color: #371d85;
+
+.form-button:hover {
+  background-color: #2658c5;
 }
 
-.form-options{
+.form-options {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  
+
   font-weight: 500;
 }
 
-.form-options a{
+.form-options a {
   color: #000000;
   text-decoration: none;
-} 
+}
 
-input[type="checkbox" ] {
+.form-options a:hover {
+  text-decoration: underline;
+}
+
+
+input[type="checkbox"] {
   margin: 0.1rem 0.3rem 0 0;
 }
-.remember{
+
+.remember {
   display: flex;
   align-items: center;
 }
 
-.form-buttons{
+.form-buttons {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.register{
-  border: 1px solid #7F55DB;
-  color: #7F55DB;
-  background-color: #FFFFFF;
-  text-decoration: none;
-}
 
-.register:hover{
-  background-color: #371d85;
-  color: white;
-}
-
-.form-register-login{
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
 
 button:disabled {
-  opacity: 0.5; /* Cambiar la apariencia visual */
-  pointer-events: none; /* Desactiva los eventos del mouse */
+  opacity: 0.5;
+  /* Cambiar la apariencia visual */
+  pointer-events: none;
+  /* Desactiva los eventos del mouse */
 }
 
 
@@ -196,6 +197,17 @@ button:disabled {
   align-items: center;
 }
 
+.pre-clase {
+  font-family: 'Poppins', sans-serif;
+  width: 80%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.logo-navbar.msp {
+  width: 60%;
+}
+
 .modal-card.show {
   transform: scale(1);
   opacity: 1;
@@ -221,6 +233,21 @@ button:disabled {
   background-color: #ff1c1c;
 }
 
+.success-btn {
+  margin-top: 10px;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #5bb85d;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.success-btn:hover {
+  background-color: #39883a;
+}
+
 .modal-date {
   font-size: 0.8rem;
   color: #666;
@@ -228,12 +255,10 @@ button:disabled {
   text-align: center;
 }
 
-.modal-footer{
+.modal-footer {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
 }
-
-

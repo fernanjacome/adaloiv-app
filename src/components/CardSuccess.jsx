@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { FaCheckCircle } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
 
-import logo from "../assets/images/logo.png";
-
-export const Card = ({ message, closeModal }) => {
+export const CardSuccess = ({ message, closeModal }) => {
   const [currentDate, setCurrentDate] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -48,16 +47,15 @@ export const Card = ({ message, closeModal }) => {
       <div
         className={`modal-card ${isVisible && !isExiting ? "show" : "close"}`}
       >
-        <MdCancel style={{ fontSize: "5rem", color: "#F1416C" }} />
+        <FaCheckCircle style={{ fontSize: "5rem", color: "#5bb85d" }} />
         <pre className="pre-clase">{message}</pre>
-        <button onClick={handleClose} className="close-btn">
+        <button onClick={handleClose} className="success-btn">
           Ok, entendido!
         </button>
         <div className="modal-footer">
           <hr />
           <p className="modal-date">{currentDate}</p>
         </div>
-        <img src={logo} className="logo-navbar msp" alt="logo" />
       </div>
     </div>
   );

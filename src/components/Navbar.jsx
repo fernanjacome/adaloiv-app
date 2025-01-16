@@ -1,55 +1,40 @@
 import React from "react";
-import {
-  FaTachometerAlt,
-  FaCog,
-  FaUser,
-  FaSignOutAlt,
-  FaBars,
-} from "react-icons/fa";
-import "./Navbar.css"; // Import the CSS file for styling
-import {
-  TbLayoutSidebarLeftCollapseFilled,
-  TbLayoutSidebarRightCollapseFilled,
-  TbMedicalCrossFilled,
-} from "react-icons/tb";
+import { FaSignOutAlt, FaNotesMedical, FaUserInjured } from "react-icons/fa";
+import "./Navbar.css";
 
-const Navbar = ({ setActiveTab, isCollapsed, toggleCollapse }) => {
+import logo from "../assets/images/logo.png";
+import { MdMedicalServices } from "react-icons/md";
+
+const Navbar = ({ setActiveTab, toggleCollapse }) => {
   return (
-    <nav className={`navbar ${isCollapsed ? "collapsed" : ""}`}>
+    <nav className="navbar">
       <div className="navbar-header">
-        {isCollapsed ? (
-          <TbMedicalCrossFilled style={{ fontSize: "2rem" }} />
-        ) : (
-          <h2>Gestion</h2>
-        )}
+        <img src={logo} className="logo-navbar" alt="logo" />
       </div>
       <ul>
         <li>
-          <button onClick={() => setActiveTab("dashboard")}>
-            <FaTachometerAlt /> <span>{!isCollapsed && "Consulta cita"}</span>
+          <button onClick={() => setActiveTab("consultaMedica")}>
+            <FaNotesMedical /> <span>Consulta Atención Medica</span>
+          </button>
+        </li>
+
+        <li>
+          <button onClick={() => setActiveTab("registroAtencionMedica")}>
+            <MdMedicalServices /> <span>Registro Atención Medica</span>
           </button>
         </li>
         <li>
-          <button onClick={() => setActiveTab("settings")}>
-            <FaCog /> <span>{!isCollapsed && "Settings"}</span>
+          <button onClick={() => setActiveTab("consultaPaciente")}>
+            <FaUserInjured /> <span>Consulta de paciente</span>
           </button>
         </li>
 
         <li>
           <button onClick={() => setActiveTab("logout")}>
-            <FaSignOutAlt /> <span>{!isCollapsed && "Logout"}</span>
+            <FaSignOutAlt /> <span>Salir</span>
           </button>
         </li>
       </ul>
-      <div className="container-button-collapse">
-        <button className="collapse-button" onClick={toggleCollapse}>
-          {isCollapsed ? (
-            <TbLayoutSidebarRightCollapseFilled />
-          ) : (
-            <TbLayoutSidebarLeftCollapseFilled />
-          )}
-        </button>
-      </div>
     </nav>
   );
 };

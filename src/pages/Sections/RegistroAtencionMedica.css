@@ -1,0 +1,63 @@
+.registro-atencion-medica {}
+
+.reatmed-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.registro-atencion-medica label {
+    display: flex;
+    flex-direction: column;
+}
+
+.registro-atencion-medica input {
+    padding: 0.7rem;
+    border-radius: 5px;
+    width: 100%;
+    min-width: 390px;
+    max-width: 390px;
+    border: 1px solid #a0a0a0;
+}
+
+.registro-atencion-medica input:focus {
+    outline: none;
+    border: 1px solid #4c81f5;
+}
+
+.form-button.reatmed {
+
+    max-width: 150px;
+}
+
+.form-button.reatmed.secondary {
+
+    background-color: gray;
+}
+
+.form-button.reatmed.secondary:hover {
+
+    background-color: rgb(75, 74, 74);
+}
+
+.container-button {
+    display: flex;
+    justify-content: end;
+    border-top: 1px solid #c0c0c0;
+    padding-top: 1rem;
+    gap: 1rem;
+}

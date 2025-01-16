@@ -1,0 +1,137 @@
+.consulta-title {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.consulta-form {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 10px;
+}
+
+.consulta-input {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.consulta-button {
+    padding: 10px 20px;
+    background-color: #5783da;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.consulta-button:hover {
+    background-color: #2658c5;
+}
+
+.consulta-error {
+    color: red;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.consulta-results {
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.consulta-item {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.modal {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1500px;
+    z-index: 1000;
+
+    border: none;
+}
+
+.modal-contenedor {
+    display: flex;
+}
+
+.modal:focus {
+    outline: none;
+}
+
+.modal-content:focus {
+    outline: none;
+}
+
+.modal-info {
+    padding: 1rem;
+    border-right: 1px solid rgba(128, 128, 128, 0.555);
+
+}
+
+.modal-info h2 {
+    border-bottom: 1px solid #5783da;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.modal-close-btn {
+    background-color: #ff5733;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.consulta-form input,
+.consulta-button {
+    padding: 10px;
+    margin: 5px;
+}
+
+.content-buton-close {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.555);
+}

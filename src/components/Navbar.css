@@ -1,12 +1,12 @@
 .navbar {
-  width: 200px;
+  width: 300px;
   background-color: white;
   color: #2c3e50;
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: width 0.3s;
+  transition: width 0.3s ease;
   border-right: 1px solid #bdc3c7;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -15,12 +15,16 @@
   width: 70px;
 }
 
+.logo-navbar {
+  width: 100%;
+}
+
 .navbar-header {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0.2rem;
+  padding: 0.2rem 0.2rem 1rem 0.2rem;
   border-bottom: 1px solid #bdc3c7;
 }
 
@@ -64,7 +68,7 @@
 }
 
 .navbar ul li {
-  margin: 20px 0;
+  margin: 15px 0;
   width: 100%;
 }
 

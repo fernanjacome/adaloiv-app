@@ -1,42 +1,41 @@
 /* Estilos generales */
-.container {
+.consulta-medica.container {
     display: flex;
     background-color: #fff;
 }
 
-.form-column {
+.consulta-medica .form-column {
     flex: 1;
     padding-right: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.details-column {
+.consulta-medica .details-column {
     flex: 3;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
 }
 
-h2 {
+.consulta-medica h2 {
     font-size: 1.6rem;
     margin-bottom: 20px;
     color: #333;
-    text-align: center;
 }
 
-form {
+.consulta-medica form {
     display: flex;
     flex-direction: column;
 }
 
-label {
+.consulta-medica label {
     font-size: 1.2rem;
     margin-bottom: 8px;
     color: #333;
 }
 
-input {
+.consulta-medica input {
     padding: 10px;
     margin-bottom: 15px;
     font-size: 1rem;
@@ -46,27 +45,27 @@ input {
     transition: border-color 0.3s ease;
 }
 
-input:focus {
+.consulta-medica input:focus {
     border-color: #007bff;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+.consulta-medica .buscar {
+    padding: 0.7rem;
+    border-radius: 5px;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    background-color: #5783da;
+    color: white;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease-in;
 }
 
-button:hover {
-    background-color: #0056b3;
+.consulta-medica .buscar:hover {
+    background-color: #2658c5;
 }
 
-.error {
-    color: red;
+
+.consulta-medica .error {
     font-size: 1rem;
     margin-top: 10px;
 }
@@ -78,7 +77,6 @@ button:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
     color: #333;
-    font-family: 'Arial', sans-serif;
 }
 
 .atemed-details h3 {
@@ -112,7 +110,7 @@ button:hover {
 }
 
 /* Estilos para el botón de cierre */
-.close-btn {
+.consulta-medica .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -121,9 +119,9 @@ button:hover {
     font-size: 1.5rem;
     color: #333;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.close-btn:hover {
-    color: #ff0000;
+.consulta-medica .close-btn:hover {
+    color: white;
 }
