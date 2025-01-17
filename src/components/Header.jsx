@@ -1,8 +1,10 @@
 import React from "react";
 import "./Header.css";
-import { useUserContext } from "../context/UserContext";
+import { useLocation } from "react-router-dom";
+
 const Header = ({ isProfesional }) => {
-  const { userData } = useUserContext();
+  const location = useLocation();
+  const { userData } = location.state || {};
   return (
     <header className="header">
       <nav className="header-nav">

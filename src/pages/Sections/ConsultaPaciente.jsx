@@ -32,37 +32,6 @@ const ConsultaPaciente = () => {
       }
     }
   };
-
-  const fieldLabels = {
-    Pcte_id: "Cédula",
-    Pcte_nom: "Nombre",
-    Pcte_sexo: "Sexo",
-    Pcte_fecha_nac: "Fecha de nacimiento",
-    Pcte_edad: "Edad",
-    Pcte_meses: "Meses",
-    Pcte_dias: "Días",
-    Pcte_nacionalidad: "Nacionalidad",
-    Pcte_celular: "Celular",
-    Pcte_edad_compuesta: "Edad compuesta",
-    Pcte_nac_etnia: "Etnia de nacimiento",
-    Pcte_tipo_bono: "Tipo de bono",
-    Pcte_seguro: "Seguro",
-    Pcte_provincia: "Provincia",
-    Pcte_canton: "Cantón",
-    Pcte_parroquia: "Parroquia",
-    Pcte_peso: "Peso",
-    Pcte_talla_cm: "Talla (cm)",
-    Pcte_imc: "Índice de Masa Corporal (IMC)",
-    Permietro_cefalico: "Perímetro cefálico",
-    Valor_hemoglobina: "Valor de hemoglobina",
-    Indice_anemia: "Índice de anemia",
-    Imc_resultado: "Resultado IMC",
-    Num_atencion_prenatal: "Número de atenciones prenatales",
-    Pcte_disc: "Discapacidad",
-    Pcte_tipo_disc: "Tipo de discapacidad",
-    Pcte_porctj_disc: "Porcentaje de discapacidad",
-  };
-
   const renderValue = (key, value) => {
     if (value === null) {
       const defaultMessages = {
@@ -133,12 +102,13 @@ const ConsultaPaciente = () => {
   ];
 
   return (
-    <div className="consulta-container">
-      <h1 className="consulta-title">Consultar Información del Paciente</h1>
+    <div className="consulta-paciente">
+      <h2 className="consulta-title">Consultar Información del Paciente</h2>
       <form onSubmit={handleSubmit} className="consulta-form">
+        <label>Ingrese el ID del paciente</label>
         <input
           type="text"
-          placeholder="Ingrese el ID del paciente"
+          placeholder=""
           value={pacienteId}
           onChange={handleInputChange}
           className="consulta-input"

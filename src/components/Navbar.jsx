@@ -1,12 +1,17 @@
 import React from "react";
-import { FaSignOutAlt, FaNotesMedical, FaUserInjured } from "react-icons/fa";
+import {
+  FaSignOutAlt,
+  FaNotesMedical,
+  FaUserInjured,
+  FaUserPlus,
+} from "react-icons/fa";
 import "./Navbar.css";
 
 import logo from "../assets/images/logo.png";
 import { MdMedicalServices } from "react-icons/md";
 import { RiFileUserFill } from "react-icons/ri";
 
-const Navbar = ({ setActiveTab, toggleCollapse, isProfesional }) => {
+const Navbar = ({ setActiveTab, isProfesional, isPaciente }) => {
   return (
     <nav className="navbar">
       <div className="navbar-header">
@@ -14,9 +19,11 @@ const Navbar = ({ setActiveTab, toggleCollapse, isProfesional }) => {
       </div>
       <ul>
         <li>
-          <button onClick={() => setActiveTab("inicioPaciente")}>
-            <RiFileUserFill /> <span>Información del Paciente</span>
-          </button>
+          {isPaciente && (
+            <button onClick={() => setActiveTab("inicioPaciente")}>
+              <RiFileUserFill /> <span>Información del Paciente</span>
+            </button>
+          )}
         </li>
         <li>
           <button onClick={() => setActiveTab("consultaMedica")}>
@@ -36,6 +43,13 @@ const Navbar = ({ setActiveTab, toggleCollapse, isProfesional }) => {
           {isProfesional && (
             <button onClick={() => setActiveTab("consultaPaciente")}>
               <FaUserInjured /> <span>Consulta de paciente</span>
+            </button>
+          )}
+        </li>
+        <li>
+          {isProfesional && (
+            <button onClick={() => setActiveTab("registroPaciente")}>
+              <FaUserPlus /> <span>Registro de paciente</span>
             </button>
           )}
         </li>

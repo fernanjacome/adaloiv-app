@@ -45,7 +45,11 @@ const PanelPaciente = () => {
     <div className="panel-container">
       {loading && <Spinner />}
 
-      <Navbar setActiveTab={setActiveTab} isProfesional={false} />
+      <Navbar
+        setActiveTab={setActiveTab}
+        isProfesional={false}
+        isPaciente={true}
+      />
       <div className="content-container">
         <Header userData={userData} />
         <main className="main-content">{renderContent()}</main>

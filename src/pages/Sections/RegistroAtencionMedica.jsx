@@ -115,7 +115,7 @@ const RegistroAtencionMedica = () => {
 
   return (
     <div className="registro-atencion-medica">
-      <h2>Agregar Atención Médica</h2>
+      <h2>Registrar nueva Atención Médica</h2>
       {success && <p style={{ color: "green" }}>{success}</p>}
 
       <form className="reatmed-form" onSubmit={handleSubmit}>

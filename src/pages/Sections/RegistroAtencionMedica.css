@@ -23,18 +23,26 @@
 .registro-atencion-medica label {
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+
 }
 
-.registro-atencion-medica input {
+
+
+.registro-atencion-medica input,
+.registro-atencion-medica textarea {
+    font-family: 'Poppins', sans-serif;
     padding: 0.7rem;
     border-radius: 5px;
     width: 100%;
     min-width: 390px;
     max-width: 390px;
-    border: 1px solid #a0a0a0;
+    border: 1px solid #ccc;
 }
 
-.registro-atencion-medica input:focus {
+.registro-atencion-medica input:focus,
+.registro-atencion-medica textarea:focus {
     outline: none;
     border: 1px solid #4c81f5;
 }

@@ -43,13 +43,13 @@ const ConsultaMedica = () => {
       <div className="form-column">
         <h2>Buscar Atención Medica</h2>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="AtemedId">Ingrese el ID:</label>
+          <label htmlFor="AtemedId">Ingrese el ID de la Atención medica:</label>
           <input
             type="text"
             id="AtemedId"
             value={AtemedId}
             onChange={(e) => setAtemedId(e.target.value)}
-            placeholder="Ingresa el ID del Atemed"
+            placeholder="12345689"
           />
           <button className="buscar" type="submit">
             Buscar

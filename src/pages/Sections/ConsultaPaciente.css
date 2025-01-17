@@ -1,13 +1,7 @@
-.consulta-title {
-    margin-bottom: 20px;
-    color: #333;
-}
-
 .consulta-form {
     display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
-    align-items: center;
-    gap: 10px;
 }
 
 .consulta-input {
@@ -18,6 +12,12 @@
     border: 1px solid #ccc;
 }
 
+.consulta-paciente label {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
 .consulta-button {
     padding: 10px 20px;
     background-color: #5783da;
@@ -25,6 +25,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    max-width: 422px;
     transition: background-color 0.2s ease;
 }
 
