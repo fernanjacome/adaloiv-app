@@ -3,43 +3,25 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import LoginPro from "./pages/Login/LoginPro";
 import LoginPaciente from "./pages/Login/LoginPaciente";
-import Panel from "./pages/Panel";
-import Prueba from "./pages/Login/Prueba";
+import PanelProfesional from "./pages/PanelProfesional";
+import PanelPaciente from "./pages/PanelPaciente";
+import { UserProvider } from "./context/UserContext";
 
 const App = () => {
   const [showLoginA, setShowLoginA] = useState(true);
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            showLoginA ? (
-              <LoginPro setShowLoginA={setShowLoginA} />
-            ) : (
-              <LoginPaciente setShowLoginA={setShowLoginA} />
-            )
-          }
-        />
-        <Route path="/prueba" element={<Prueba />} />
-        <Route
-          path="/login"
-          element={
-            showLoginA ? (
-              <LoginPro setShowLoginA={setShowLoginA} />
-            ) : (
-              <LoginPaciente setShowLoginA={setShowLoginA} />
-            )
-          }
-        />
-        <Route
-          path="/LoginB"
-          element={<LoginPaciente setShowLoginA={setShowLoginA} />}
-        />
-        <Route path="/panel" element={<Panel />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPro />} />
+          <Route path="/login-profesional" element={<LoginPro />} />
+          <Route path="/login-paciente" element={<LoginPaciente />} />
+          <Route path="/panel-profesional" element={<PanelProfesional />} />
+          <Route path="/panel-paciente" element={<PanelPaciente />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
-import "./Panel.css";
+import "./PanelProfesional.css";
 import ConsultaMedica from "./Sections/ConsultaMedica";
 import Profile from "./Sections/ConsultaPaciente";
 import Logout from "./Sections/Logout";
@@ -9,7 +9,7 @@ import Spinner from "../components/Spinner";
 import { useLocation, useNavigate } from "react-router-dom";
 import RegistroAtencionMedica from "./Sections/RegistroAtencionMedica";
 
-const Panel = () => {
+const PanelProfesional = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isCollapsed, setIsCollapsed] = useState(false);
   const location = useLocation();
@@ -25,7 +25,7 @@ const Panel = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate("/login");
+      navigate("/login-profesional");
     }, 1000);
   };
 
@@ -48,11 +48,7 @@ const Panel = () => {
     <div className="panel-container">
       {loading && <Spinner />}
 
-      <Navbar
-        setActiveTab={setActiveTab}
-        isCollapsed={isCollapsed}
-        toggleCollapse={toggleCollapse}
-      />
+      <Navbar isProfesional={true} setActiveTab={setActiveTab} />
       <div className="content-container">
         <Header userData={userData} />
         <main className="main-content">{renderContent()}</main>
@@ -61,4 +57,4 @@ const Panel = () => {
   );
 };
 
-export default Panel;
+export default PanelProfesional;

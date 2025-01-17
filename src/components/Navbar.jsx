@@ -4,8 +4,9 @@ import "./Navbar.css";
 
 import logo from "../assets/images/logo.png";
 import { MdMedicalServices } from "react-icons/md";
+import { RiFileUserFill } from "react-icons/ri";
 
-const Navbar = ({ setActiveTab, toggleCollapse }) => {
+const Navbar = ({ setActiveTab, toggleCollapse, isProfesional }) => {
   return (
     <nav className="navbar">
       <div className="navbar-header">
@@ -13,20 +14,30 @@ const Navbar = ({ setActiveTab, toggleCollapse }) => {
       </div>
       <ul>
         <li>
+          <button onClick={() => setActiveTab("inicioPaciente")}>
+            <RiFileUserFill /> <span>Información del Paciente</span>
+          </button>
+        </li>
+        <li>
           <button onClick={() => setActiveTab("consultaMedica")}>
             <FaNotesMedical /> <span>Consulta Atención Medica</span>
           </button>
         </li>
 
         <li>
-          <button onClick={() => setActiveTab("registroAtencionMedica")}>
-            <MdMedicalServices /> <span>Registro Atención Medica</span>
-          </button>
+          {isProfesional && (
+            <button onClick={() => setActiveTab("registroAtencionMedica")}>
+              <MdMedicalServices /> <span>Registro Atención Medica</span>
+            </button>
+          )}
         </li>
+
         <li>
-          <button onClick={() => setActiveTab("consultaPaciente")}>
-            <FaUserInjured /> <span>Consulta de paciente</span>
-          </button>
+          {isProfesional && (
+            <button onClick={() => setActiveTab("consultaPaciente")}>
+              <FaUserInjured /> <span>Consulta de paciente</span>
+            </button>
+          )}
         </li>
 
         <li>

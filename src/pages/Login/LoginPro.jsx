@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "@Components/Card";
 import Spinner from "../../components/Spinner";
 
-const LoginPro = ({ setShowLoginA }) => {
+const LoginPro = () => {
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -49,7 +49,7 @@ const LoginPro = ({ setShowLoginA }) => {
         }
         setIsSubmitting(false);
         setLoading(false);
-        navigate("/panel", { state: { userData: response.data } });
+        navigate("/panel-profesional", { state: { userData: response.data } });
         console.log("Login successful", response.data);
       }
     } catch (error) {
@@ -113,7 +113,7 @@ const LoginPro = ({ setShowLoginA }) => {
             </div>
             <div className="form-options">
               <div className="">
-                <a href="/loginB">Ingresar como paciente</a>
+                <a href="/login-paciente">Ingresar como paciente</a>
               </div>
             </div>
 

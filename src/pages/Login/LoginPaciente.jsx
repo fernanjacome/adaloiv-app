@@ -3,10 +3,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@Components/Card";
 import Spinner from "../../components/Spinner";
+import { useUserContext } from "../../context/UserContext";
 
-const LoginPaciente = ({ setShowLoginA }) => {
+const LoginPaciente = () => {
   const [cedula, setCedula] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const { setUserData } = useUserContext();
 
   const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
@@ -29,7 +31,8 @@ const LoginPaciente = ({ setShowLoginA }) => {
         localStorage.setItem("access_token", response.data.access_token);
         localStorage.setItem("refresh_token", response.data.refresh_token);
         setLoading(false);
-        navigate("/panel");
+        setUserData(response.data);
+        navigate("/panel-paciente", { state: { userData: response.data } });
       }
     } catch (error) {
       setErrorMessage("No se encuentra registrado en el sistema MSP");
@@ -73,7 +76,7 @@ const LoginPaciente = ({ setShowLoginA }) => {
             </div>
             <div className="form-options">
               <div className="">
-                <a href="/login">Ingresar como doctor</a>
+                <a href="/login-profesional">Ingresar como doctor</a>
               </div>
             </div>
             <div className="form-buttons">
