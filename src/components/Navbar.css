@@ -119,3 +119,11 @@
 .navbar ul li button span {
   transition: opacity 0.3s, transform 0.3s;
 }
+
+.footer-navbar {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}

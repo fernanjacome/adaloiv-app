@@ -8,6 +8,7 @@ import {
 import "./Navbar.css";
 
 import logo from "../assets/images/logo.png";
+import flags from "../assets/images/flags.webp";
 import { MdMedicalServices } from "react-icons/md";
 import { RiFileUserFill } from "react-icons/ri";
 
@@ -60,6 +61,9 @@ const Navbar = ({ setActiveTab, isProfesional, isPaciente }) => {
           </button>
         </li>
       </ul>
+      <div>
+        <img src={flags} className="footer-navbar" />
+      </div>
     </nav>
   );
 };

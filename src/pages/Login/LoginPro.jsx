@@ -13,15 +13,6 @@ const LoginPro = () => {
 
   const [loading, setLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-
-  useEffect(() => {
-    const savedUsername = localStorage.getItem("rememberedUsername");
-    if (savedUsername) {
-      setUsername(savedUsername);
-      setRememberMe(true);
-    }
-  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,19 +29,15 @@ const LoginPro = () => {
           id: password,
         }
       );
-      console.log(response);
       if (response.status === 200) {
-        localStorage.setItem("AccessToken", response.data.access_token);
-        localStorage.setItem("RefreshToken", response.data.refresh_token);
-        if (rememberMe) {
-          localStorage.setItem("rememberedUsername", email);
-        } else {
-          localStorage.removeItem("rememberedUsername");
-        }
         setIsSubmitting(false);
-        setLoading(false);
-        navigate("/panel-profesional", { state: { userData: response.data } });
-        console.log("Login successful", response.data);
+        setTimeout(() => {
+          setLoading(false);
+
+          navigate("/panel-profesional", {
+            state: { userData: response.data },
+          });
+        }, 1000);
       }
     } catch (error) {
       console.log(error.response);

@@ -1,6 +1,9 @@
 import React from "react";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
+import { FaUserDoctor } from "react-icons/fa6";
+import { FaIdCard, FaUser } from "react-icons/fa";
+import { IoMedical } from "react-icons/io5";
 
 const Header = ({ isProfesional }) => {
   const location = useLocation();
@@ -14,24 +17,29 @@ const Header = ({ isProfesional }) => {
               {userData && isProfesional ? (
                 <div className="info-profesional">
                   <p className="user-data-p">
+                    <FaUserDoctor />
                     <strong>Profesional: </strong>
                     {userData.Prof_FullNombre}{" "}
                   </p>
                   <p className="user-data-p">
+                    <FaIdCard />
                     <strong>Cedula:</strong> {userData.Prof_Id}
                   </p>
                   <p className="user-data-p">
+                    <IoMedical />
                     <strong>Especialidad:</strong> {userData.Especialización}
                   </p>
                 </div>
               ) : (
                 <div className="info-profesional">
                   <p className="user-data-p">
-                    <strong>Paciente:</strong> {userData?.Data.Pcte_nom}
+                    <FaUser />
+                    <strong>Paciente: </strong> {userData?.Data.Pcte_nom}
                   </p>
 
                   <p className="user-data-p">
-                    <strong>Cedula:</strong> {userData?.Data.Pcte_id}
+                    <FaIdCard />
+                    <strong>Cedula: </strong> {userData?.Data.Pcte_id}
                   </p>
                 </div>
               )}

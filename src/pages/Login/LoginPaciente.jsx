@@ -27,12 +27,13 @@ const LoginPaciente = () => {
       );
       console.log(response);
       if (response.status === 200) {
-        // Almacenar los tokens en el almacenamiento local del navegador
-        localStorage.setItem("access_token", response.data.access_token);
-        localStorage.setItem("refresh_token", response.data.refresh_token);
-        setLoading(false);
-        setUserData(response.data);
-        navigate("/panel-paciente", { state: { userData: response.data } });
+        setTimeout(() => {
+          setLoading(false);
+
+          navigate("/panel-paciente", { state: { userData: response.data } });
+
+          setUserData(response.data);
+        }, 1000);
       }
     } catch (error) {
       setErrorMessage("No se encuentra registrado en el sistema MSP");
