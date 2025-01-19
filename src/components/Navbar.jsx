@@ -61,9 +61,6 @@ const Navbar = ({ setActiveTab, isProfesional, isPaciente }) => {
           </button>
         </li>
       </ul>
-      <div>
-        <img src={flags} className="footer-navbar" />
-      </div>
     </nav>
   );
 };

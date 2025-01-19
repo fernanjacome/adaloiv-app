@@ -67,8 +67,8 @@ const RegistroPaciente = () => {
       setShowSuccessModal(true);
       setSuccess("Paciente registrado con éxito");
     } else {
-      if (response.data.message) {
-        setErrorMessage(response.data.message);
+      if (response.data?.message) {
+        setErrorMessage(response.data?.message);
       } else {
         setErrorMessage("Hubo un error al registrar el paciente.");
       }
