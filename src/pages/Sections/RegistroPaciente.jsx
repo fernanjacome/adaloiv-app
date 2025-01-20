@@ -246,8 +246,9 @@ const RegistroPaciente = () => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Sin Definir">Sin Definir</option>
               </select>
             </div>
 
@@ -257,7 +258,7 @@ const RegistroPaciente = () => {
                 id="Pcte_fecha_nac"
                 type="date"
                 name="Pcte_fecha_nac"
-                value={formData.Pcte_fecha_nac}
+                value={formData.Pcte_fecha_nac.split("T")[0]}
                 onChange={handleChange}
                 className="form-input"
               />
@@ -590,8 +591,12 @@ const RegistroPaciente = () => {
         </div>
         <hr></hr>
         <div className="button-container">
-          <button type="submit" className="submit-btn">
-            Editar Paciente
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={buttonDisabled}
+          >
+            Registrar Paciente
           </button>
           <button
             type="button"

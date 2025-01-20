@@ -246,8 +246,9 @@ const EditarPacienteForm = ({ pacienteId }) => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Sin Definir">Sin Definir</option>
               </select>
             </div>
 
@@ -257,7 +258,7 @@ const EditarPacienteForm = ({ pacienteId }) => {
                 id="Pcte_fecha_nac"
                 type="date"
                 name="Pcte_fecha_nac"
-                value={formData.Pcte_fecha_nac}
+                value={formData.Pcte_fecha_nac.split("T")[0]}
                 onChange={handleChange}
                 className="form-input"
               />
