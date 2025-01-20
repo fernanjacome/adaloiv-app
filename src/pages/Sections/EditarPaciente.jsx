@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./RegistroPaciente.css";
-import { CardSuccess } from "../../components/CardSuccess";
-import { Card } from "@Components/Card";
 import axios from "axios";
+import { Card } from "@Components/Card";
+import { CardSuccess } from "../../components/CardSuccess";
 
-const RegistroPaciente = () => {
-  // Definimos el estado del formulario
+const EditarPacienteForm = ({ pacienteId }) => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [success, setSuccess] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [buttonConsulta, setButtonConsulta] = useState(true);
-  const [success, setSuccess] = useState("");
   const [formData, setFormData] = useState({
-    Pcte_id: "",
     Pcte_nom: "",
-    Pcte_sexo: "M",
+    Pcte_sexo: "",
     Pcte_fecha_nac: "",
     Pcte_edad: "",
     Pcte_meses: "",
@@ -113,32 +110,25 @@ const RegistroPaciente = () => {
     }
   };
 
-  // Función para enviar los datos del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch(
-      "http://127.0.0.1:8000/api/registrar-paciente/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
-
-    if (response.ok) {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/paciente/editar/${formData.Pcte_id}/`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       setShowSuccessModal(true);
-      setSuccess("Paciente registrado con éxito");
-    } else {
-      if (response.data?.message) {
-        setShowErrorModal(true);
-        setErrorMessage(response.data?.message);
-      } else {
-        setShowErrorModal(true);
-        setErrorMessage("Hubo un error al registrar el paciente.");
-      }
+      setSuccess("Paciente actualizado exitosamente.");
+    } catch (error) {
+      console.error("Error al actualizar el paciente:", error.response.data);
+      setShowErrorModal(true);
+      setErrorMessage("Error al actualizar el paciente.");
     }
   };
 
@@ -180,25 +170,35 @@ const RegistroPaciente = () => {
     setShowSuccessModal(false);
     setErrorMessage("");
   };
-
   const handleConsulta = async () => {
-    const response = await axios.get(
-      `http://localhost:8000/api/paciente/${formData.Pcte_id}/`
-    );
-    if (response.data) {
-      setFormData(response.data);
-      setButtonDisabled(true);
-    } else {
-      setErrorMessage(
-        "El paciente no se encuentra en la base de datos del MSP"
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/paciente/${formData.Pcte_id}/`
       );
+      if (response.data) {
+        setFormData(response.data);
+        setButtonDisabled(true);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        // Si el error es 404 (no encontrado)
+        setShowErrorModal(true);
+        setErrorMessage(
+          "El paciente no se encuentra en la base de datos del MSP"
+        );
+      } else {
+        setShowErrorModal(true);
+        setErrorMessage(
+          "Hubo un problema con la solicitud. Inténtalo de nuevo."
+        );
+      }
     }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <h3>Registro paciente</h3>
+        <h3>Editar paciente</h3>
         <div className="form-container">
           {" "}
           <div className="form-column-rpaciente">
@@ -246,8 +246,8 @@ const RegistroPaciente = () => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
               </select>
             </div>
 
@@ -361,12 +361,12 @@ const RegistroPaciente = () => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="ninguno">Ninguno</option>
-                <option value="desarrollo_humano">Desarrollo Humano</option>
-                <option value="joaquin_gallegos_lara">
+                <option value="Ninguno">Ninguno</option>
+                <option value="Desarrollo Humano">Desarrollo Humano</option>
+                <option value="Joaquín Gallegos Lara">
                   Joaquín Gallegos Lara
                 </option>
-                <option value="manuela_espejo">Manuela Espejo</option>
+                <option value="Manuela Espejo">Manuela Espejo</option>
               </select>
             </div>
 
@@ -379,17 +379,17 @@ const RegistroPaciente = () => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="no_aporta">No aporta</option>
-                <option value="iess_jubilado">
+                <option value="No Aporta">No aporta</option>
+                <option value="IESS, Jubilado Sistema de Pensiones">
                   IESS, Jubilado sistema de pensiones
                 </option>
-                <option value="iess_afiliado">
+                <option value="IESS, Afiliado Seguro General Tiempo Completo">
                   IESS, Afiliado seguro general tiempo completo
                 </option>
-                <option value="afilacion_desconocida">
+                <option value="Tipo de Afiliación Desconocida">
                   Tipo de afiliación desconocida
                 </option>
-                <option value="iess_afiliado_campesino">
+                <option value="IESS, Afiliado Seguro Campesino">
                   IESS, Afiliado seguro Campesino
                 </option>
               </select>
@@ -513,12 +513,12 @@ const RegistroPaciente = () => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="ninguno">Ninguno</option>
-                <option value="obesidad_tipo_i">Obesidad Tipo I</option>
-                <option value="peso_normal">Peso normal</option>
-                <option value="sobrepeso">Sobrepeso</option>
-                <option value="delgadez_aceptable">Delgadez Aceptable</option>
-                <option value="obesidad_tipo_ii">Obesidad Tipo II</option>
+                <option value="Ninguno">Ninguno</option>
+                <option value="Obesidad Tipo I">Obesidad Tipo I</option>
+                <option value="Peso normal">Peso normal</option>
+                <option value="Sobrepeso">Sobrepeso</option>
+                <option value="Delgadez Aceptable">Delgadez Aceptable</option>
+                <option value="Obesidad Tipo II">Obesidad Tipo II</option>
               </select>
             </div>
 
@@ -557,19 +557,19 @@ const RegistroPaciente = () => {
                 onChange={handleChange}
                 className="form-input"
               >
-                <option value="ninguno">Ninguno</option>
-                <option value="fisica">Física</option>
-                <option value="auditiva">Auditiva</option>
-                <option value="psicosocial">Psicosocial</option>
-                <option value="visual">Visual</option>
-                <option value="motora">Motora</option>
-                <option value="intelectual">Intelectual</option>
-                <option value="multiple">Múltiple</option>
-                <option value="enfermedad_cronica">Enfermedad Crónica</option>
-                <option value="neurologica">Neurológica</option>
-                <option value="autismo">Autismo</option>
-                <option value="cognitiva">Cognitiva</option>
-                <option value="depresion">Depresión</option>
+                <option value="Ninguno">Ninguno</option>
+                <option value="Física">Física</option>
+                <option value="Auditiva">Auditiva</option>
+                <option value="Psicosocial">Psicosocial</option>
+                <option value="Visual">Visual</option>
+                <option value="Motora">Motora</option>
+                <option value="Intelectual">Intelectual</option>
+                <option value="Múltiple">Múltiple</option>
+                <option value="Enfermedad Crónica">Enfermedad Crónica</option>
+                <option value="Neurológica">Neurológica</option>
+                <option value="Autismo">Autismo</option>
+                <option value="Cognitiva">Cognitiva</option>
+                <option value="Depresión">Depresión</option>
               </select>
             </div>
 
@@ -612,4 +612,4 @@ const RegistroPaciente = () => {
   );
 };
 
-export default RegistroPaciente;
+export default EditarPacienteForm;

@@ -7,18 +7,18 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-
-
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
+
 .login {
-  width: 100vw;
+  width: 100vw; /* Cambia a 100vw para ocupar todo el ancho */
+  height: 100vh; /* Cambia a 100vh para ocupar toda la altura */
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+
   background-image: url("./assets/images/bg.webp");
   background-size: cover;
   background-position: center;
@@ -27,6 +27,7 @@ body {
 
   text-align: center;
   padding: 20px;
+  overflow-y: hidden; /* Elimina el scroll */
 }
 
 .App {

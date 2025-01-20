@@ -59,13 +59,11 @@ const RegistroAtencionMedica = () => {
           },
         }
       );
-      console.log(response);
       setShowSuccessModal(true);
       setSuccess(
         "Atención médica registrada con éxito \n ID: " + response.data.Atemed_id
       );
       setErrorMessage("");
-      console.log(response.data);
     } catch (err) {
       setShowErrorModal(true);
       setSuccess("");

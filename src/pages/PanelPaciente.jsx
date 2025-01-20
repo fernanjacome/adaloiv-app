@@ -27,7 +27,6 @@ const PanelPaciente = () => {
       navigate("/login-profesional");
     }, 1000);
   };
-  console.log(userData);
   const renderContent = () => {
     switch (activeTab) {
       case "inicioPaciente":

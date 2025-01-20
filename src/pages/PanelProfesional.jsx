@@ -9,6 +9,7 @@ import Spinner from "../components/Spinner";
 import { useLocation, useNavigate } from "react-router-dom";
 import RegistroAtencionMedica from "./Sections/RegistroAtencionMedica";
 import RegistroPaciente from "./Sections/RegistroPaciente";
+import EditarPacienteForm from "./Sections/EditarPaciente";
 
 const PanelProfesional = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -40,6 +41,8 @@ const PanelProfesional = () => {
         return <ConsultaPaciente />;
       case "registroPaciente":
         return <RegistroPaciente />;
+      case "editarPaciente":
+        return <EditarPacienteForm />;
       case "logout":
         return <Logout onConfirm={handleLogoutConfirm} />;
       default:

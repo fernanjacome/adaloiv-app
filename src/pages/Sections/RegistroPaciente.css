@@ -8,6 +8,30 @@
     display: flex;
     flex-direction: column;
 }
+.paciente_id {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.paciente_id button{
+    width: 100%;
+    max-height: 40px;
+    max-width: 100px;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #5783da;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in;
+}
+
+
+  
+.paciente_id button:hover {
+    background-color: #2658c5;
+  }
 
 .form-group label {
     font-weight: bold;
@@ -26,21 +50,23 @@
 input[type="date"] {
     font-family: 'Poppins', sans-serif;
 }
-
+.paciente_id{
+    display: flex;
+}
 select {
-    min-width: 346px;
+    width: 100% !important;
     font-family: 'Poppins', sans-serif;
 }
 
 .form-column-rpaciente {
     display: flex;
     flex-direction: column;
-    min-width: 325px;
 }
 
 .button-container {
     display: flex;
     justify-content: end;
+    gap: 1rem;
 }
 
 .submit-btn {
@@ -55,7 +81,12 @@ select {
     transition: background-color 0.3s ease;
     font-family: 'Poppins', sans-serif;
 }
-
+.submit-btn.cancel {
+    background-color: #56595e;
+}
+.submit-btn.cancel:hover {
+    background-color: #34373b;
+}
 .submit-btn:hover {
     background-color: #2658c5;
 }

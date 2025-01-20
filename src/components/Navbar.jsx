@@ -54,6 +54,13 @@ const Navbar = ({ setActiveTab, isProfesional, isPaciente }) => {
             </button>
           )}
         </li>
+        <li>
+          {isProfesional && (
+            <button onClick={() => setActiveTab("editarPaciente")}>
+              <FaUserPlus /> <span>Editar paciente</span>
+            </button>
+          )}
+        </li>
 
         <li>
           <button onClick={() => setActiveTab("logout")}>

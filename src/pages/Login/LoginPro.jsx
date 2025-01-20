@@ -40,7 +40,6 @@ const LoginPro = () => {
         }, 1000);
       }
     } catch (error) {
-      console.log(error.response);
       if (error.response) {
         setErrorMessage(error.response.data.message || "Error en el servidor.");
       } else if (error.request) {
