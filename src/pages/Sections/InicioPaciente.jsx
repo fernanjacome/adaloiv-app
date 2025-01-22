@@ -3,7 +3,7 @@ import "./InicioPaciente.css";
 
 const InicioPaciente = () => {
   const { userData } = useUserContext();
-  const paciente = userData.Data;
+  const paciente = userData?.Data || "";
 
   // Función para manejar datos null y mostrar "Información no disponible"
   const getValue = (value) =>

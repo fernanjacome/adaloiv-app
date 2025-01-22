@@ -12,31 +12,31 @@ const EditarPacienteForm = ({ pacienteId }) => {
   const [buttonConsulta, setButtonConsulta] = useState(true);
   const [formData, setFormData] = useState({
     Pcte_nom: "",
-    Pcte_sexo: "",
+    Pcte_sexo: "M",
     Pcte_fecha_nac: "",
-    Pcte_edad: "",
-    Pcte_meses: "",
-    Pcte_dias: "",
-    Pcte_edad_compuesta: "",
-    Pcte_nacionalidad: "",
-    Pcte_nac_etnia: "",
-    Pcte_celular: "",
-    Pcte_tipo_bono: "",
-    Pcte_seguro: "",
-    Pcte_provincia: "",
-    Pcte_canton: "",
-    Pcte_parroquia: "",
-    Pcte_peso: "",
-    Pcte_talla_cm: "",
-    Pcte_imc: "",
-    Permietro_cefalico: "",
-    Valor_hemoglobina: "",
-    Indice_anemia: "",
-    Imc_resultado: "",
+    Pcte_edad: 0,
+    Pcte_meses: 0,
+    Pcte_dias: 0,
+    Pcte_edad_compuesta: "N/A",
+    Pcte_nacionalidad: "N/A",
+    Pcte_nac_etnia: "N/A",
+    Pcte_celular: "N/A",
+    Pcte_tipo_bono: "Ninguno",
+    Pcte_seguro: "No aporta",
+    Pcte_provincia: "N/A",
+    Pcte_canton: "N/A",
+    Pcte_parroquia: "N/A",
+    Pcte_peso: "N/A",
+    Pcte_talla_cm: 0,
+    Pcte_imc: "N/A",
+    Permietro_cefalico: 0,
+    Valor_hemoglobina: "N/A",
+    Indice_anemia: "N/A",
+    Imc_resultado: "N/A",
     Num_atencion_prenatal: "",
-    Pcte_disc: "",
-    Pcte_tipo_disc: "",
-    Pcte_porctj_disc: "",
+    Pcte_disc: "NO APLICA",
+    Pcte_tipo_disc: "N/A",
+    Pcte_porctj_disc: "N/A",
   });
 
   useEffect(() => {
@@ -78,7 +78,6 @@ const EditarPacienteForm = ({ pacienteId }) => {
         });
       }
     } else if (name === "Pcte_fecha_nac") {
-      // Código para calcular la edad (ya proporcionado en tu ejemplo)
       const fechaNacimiento = new Date(value);
       const hoy = new Date();
 
@@ -87,11 +86,23 @@ const EditarPacienteForm = ({ pacienteId }) => {
       let edadDias = hoy.getDate() - fechaNacimiento.getDate();
 
       if (edadMeses < 0) {
+        edadAnios--;
         edadMeses += 12;
       }
+
       if (edadDias < 0) {
-        edadDias += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate();
+        edadMeses--;
+        const ultimoDiaDelMes = new Date(
+          hoy.getFullYear(),
+          hoy.getMonth(),
+          0
+        ).getDate();
+        edadDias += ultimoDiaDelMes;
       }
+
+      console.log(
+        `Edad: ${edadAnios} años, ${edadMeses} meses, ${edadDias} días`
+      );
 
       setFormData({
         ...formData,
@@ -123,8 +134,10 @@ const EditarPacienteForm = ({ pacienteId }) => {
           body: JSON.stringify(formData),
         }
       );
-      setShowSuccessModal(true);
-      setSuccess("Paciente actualizado exitosamente.");
+      if (response.ok) {
+        setShowSuccessModal(true);
+        setSuccess("Paciente actualizado exitosamente.");
+      }
     } catch (error) {
       console.error("Error al actualizar el paciente:", error.response.data);
       setShowErrorModal(true);
@@ -135,39 +148,39 @@ const EditarPacienteForm = ({ pacienteId }) => {
   const handleCancel = () => {
     setButtonDisabled(false);
     setFormData({
-      Pcte_id: "",
       Pcte_nom: "",
       Pcte_sexo: "M",
       Pcte_fecha_nac: "",
-      Pcte_edad: "",
-      Pcte_meses: "",
-      Pcte_dias: "",
-      Pcte_edad_compuesta: "",
-      Pcte_nacionalidad: "",
-      Pcte_nac_etnia: "",
-      Pcte_celular: "",
-      Pcte_tipo_bono: "",
-      Pcte_seguro: "",
-      Pcte_provincia: "",
-      Pcte_canton: "",
-      Pcte_parroquia: "",
-      Pcte_peso: "",
-      Pcte_talla_cm: "",
-      Pcte_imc: "",
-      Permietro_cefalico: "",
-      Valor_hemoglobina: "",
-      Indice_anemia: "",
-      Imc_resultado: "",
+      Pcte_edad: 0,
+      Pcte_meses: 0,
+      Pcte_dias: 0,
+      Pcte_edad_compuesta: "N/A",
+      Pcte_nacionalidad: "N/A",
+      Pcte_nac_etnia: "N/A",
+      Pcte_celular: "N/A",
+      Pcte_tipo_bono: "Ninguno",
+      Pcte_seguro: "No aporta",
+      Pcte_provincia: "N/A",
+      Pcte_canton: "N/A",
+      Pcte_parroquia: "N/A",
+      Pcte_peso: "N/A",
+      Pcte_talla_cm: 0,
+      Pcte_imc: "N/A",
+      Permietro_cefalico: 0,
+      Valor_hemoglobina: "N/A",
+      Indice_anemia: "N/A",
+      Imc_resultado: "N/A",
       Num_atencion_prenatal: "",
-      Pcte_disc: "",
-      Pcte_tipo_disc: "",
-      Pcte_porctj_disc: "",
+      Pcte_disc: "NO APLICA",
+      Pcte_tipo_disc: "N/A",
+      Pcte_porctj_disc: "N/A",
     });
   };
 
   const closeModal = () => {
     setShowErrorModal(false);
     setShowSuccessModal(false);
+
     setErrorMessage("");
   };
   const handleConsulta = async () => {
@@ -180,17 +193,9 @@ const EditarPacienteForm = ({ pacienteId }) => {
         setButtonDisabled(true);
       }
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        // Si el error es 404 (no encontrado)
+      if (error.response) {
         setShowErrorModal(true);
-        setErrorMessage(
-          "El paciente no se encuentra en la base de datos del MSP"
-        );
-      } else {
-        setShowErrorModal(true);
-        setErrorMessage(
-          "Hubo un problema con la solicitud. Inténtalo de nuevo."
-        );
+        setErrorMessage(error?.response?.data?.message);
       }
     }
   };
@@ -212,6 +217,7 @@ const EditarPacienteForm = ({ pacienteId }) => {
                   value={formData.Pcte_id}
                   onChange={handleChange}
                   required
+                  disabled={buttonDisabled}
                   className="form-input"
                 />
                 <button

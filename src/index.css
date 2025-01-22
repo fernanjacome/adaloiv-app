@@ -1,6 +1,10 @@
 /* Importa la fuente con font-display: swap */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
 
@@ -13,8 +17,10 @@ body {
 
 
 .login {
-  width: 100vw; /* Cambia a 100vw para ocupar todo el ancho */
-  height: 100vh; /* Cambia a 100vh para ocupar toda la altura */
+  width: 100vw;
+  /* Cambia a 100vw para ocupar todo el ancho */
+  height: 100vh;
+  /* Cambia a 100vh para ocupar toda la altura */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +33,8 @@ body {
 
   text-align: center;
   padding: 20px;
-  overflow-y: hidden; /* Elimina el scroll */
+  overflow-y: hidden;
+  /* Elimina el scroll */
 }
 
 .App {

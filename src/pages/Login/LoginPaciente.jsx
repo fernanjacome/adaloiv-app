@@ -9,6 +9,7 @@ const LoginPaciente = () => {
   const [cedula, setCedula] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const { setUserData } = useUserContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [showErrorModal, setShowErrorModal] = useState(false);
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ const LoginPaciente = () => {
     e.preventDefault();
     setErrorMessage("");
     setLoading(true);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/login-paciente/",
@@ -26,6 +29,7 @@ const LoginPaciente = () => {
         }
       );
       if (response.status === 200) {
+        setIsSubmitting(false);
         setTimeout(() => {
           setLoading(false);
 
@@ -80,7 +84,11 @@ const LoginPaciente = () => {
               </div>
             </div>
             <div className="form-buttons">
-              <button className="form-button" type="submit">
+              <button
+                className="form-button"
+                type="submit"
+                disabled={isSubmitting || !cedula}
+              >
                 Ingresar
               </button>
             </div>

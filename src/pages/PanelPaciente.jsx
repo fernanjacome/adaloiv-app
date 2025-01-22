@@ -7,6 +7,7 @@ import Logout from "./Sections/Logout";
 import Spinner from "../components/Spinner";
 import { useLocation, useNavigate } from "react-router-dom";
 import InicioPaciente from "./Sections/InicioPaciente";
+import ConsultaMedicaPaciente from "./Sections/ConsultaMedicaPaciente";
 
 const PanelPaciente = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -32,7 +33,7 @@ const PanelPaciente = () => {
       case "inicioPaciente":
         return <InicioPaciente userData={userData} />;
       case "consultaMedica":
-        return <ConsultaMedica />;
+        return <ConsultaMedicaPaciente userData={userData} />;
       case "logout":
         return <Logout onConfirm={handleLogoutConfirm} />;
       default:
