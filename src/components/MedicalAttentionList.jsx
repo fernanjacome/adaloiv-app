@@ -70,19 +70,23 @@ const MedicalAttentionList = ({ data }) => {
           <p>
             <strong>Tipo Atención:</strong> {attention.Atemed_Tipo_Ate}
           </p>
-          <a
-            href="#!"
+          <button
             onClick={() => toggleCard(attention.Atemed_id)}
             style={{
               display: "inline-block",
-              color: "#007BFF",
-              textDecoration: "underline",
+              color: "white",
+              backgroundColor: "#007BFF",
               cursor: "pointer",
               marginTop: "10px",
+              padding: "10px",
+              fontSize: "15px",
+              fontWeight: "500",
+              borderRadius: "4px",
+              border: "none",
             }}
           >
             Ver receta
-          </a>
+          </button>
 
           {/* Mostrar la receta si esta card está abierta */}
           {openCardId === attention.Atemed_id && (

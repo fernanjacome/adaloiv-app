@@ -17,12 +17,13 @@ const ConsultaMedica = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/atemed/${AtemedId}/`
+        `http://127.0.0.1:8000/api/atemed/profesional/${AtemedId}/`
       );
 
+      console.log(response);
       if (response.ok) {
         const data = await response.json();
-        setAtemedData(data[0]);
+        setAtemedData(data.data);
         setError(null);
       } else {
         throw new Error("No se encontró el Atemed con ese ID");

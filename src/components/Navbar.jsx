@@ -4,6 +4,7 @@ import {
   FaNotesMedical,
   FaUserInjured,
   FaUserPlus,
+  FaUserEdit,
 } from "react-icons/fa";
 import "./Navbar.css";
 
@@ -57,7 +58,7 @@ const Navbar = ({ setActiveTab, isProfesional, isPaciente }) => {
         <li>
           {isProfesional && (
             <button onClick={() => setActiveTab("editarPaciente")}>
-              <FaUserPlus /> <span>Editar paciente</span>
+              <FaUserEdit /> <span>Editar paciente</span>
             </button>
           )}
         </li>
